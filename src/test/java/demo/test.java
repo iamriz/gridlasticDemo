@@ -26,16 +26,16 @@ public class test {
 	public void testTemp1() throws Exception {
 		DesiredCapabilities cap = DesiredCapabilities.firefox();
 		cap.setCapability("jenkins.label", "redhat5 && amd64");
-//		driver = new FirefoxDriver();
-		driver = new RemoteWebDriver(
-				new URL("http://ec2-52-32-174-44.us-west-2.compute.amazonaws.com:4444/wd/hub"),
-				cap);
+		driver = new FirefoxDriver();
+//		driver = new RemoteWebDriver(
+//				new URL("http://ec2-52-32-174-44.us-west-2.compute.amazonaws.com:4444/wd/hub"),
+//				cap);
 		baseUrl = "https://docs.google.com/";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.get(baseUrl +
 		"/forms/d/1xB5BbIf6ZIkhXsZrk0WyerGc-UcBDpCm26ydOFpYLYI/viewform");
 		driver.findElement(By.id("entry_1359528431")).clear();
-		driver.findElement(By.id("entry_1359528431")).sendKeys("jufni2");
+		driver.findElement(By.id("entry_1359528431")).sendKeys("jufni4");
 		driver.findElement(By.id("ss-submit")).click();
 	}
 
