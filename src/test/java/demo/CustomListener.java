@@ -34,12 +34,6 @@ public class CustomListener extends TestListenerAdapter{
         if (++m_count % 40 == 0) {
 	    System.out.println("");
         }
-    }
-    
-    
-    
-  
-    
-    
+    }   
 
 }

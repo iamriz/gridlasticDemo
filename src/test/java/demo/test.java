@@ -1,36 +1,15 @@
 package demo;
 
 import org.junit.After;
-import org.junit.Before;
-import org.openqa.selenium.remote.Augmenter;
-
-import java.io.File;
-import java.io.FileOutputStream;
-
-import org.apache.commons.codec.binary.Base64;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
 import java.net.URL;
-import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.Platform;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
-import com.thoughtworks.selenium.DefaultSelenium;
-import com.thoughtworks.selenium.Selenium;
 
 // Notes: hub and videoURL parameter is passed in from Jenkins maven job like:
 // GOAL: test -Dhub=http://USERNAME:USER_KEY@SUBDOMAIN.gridlastic.com:80/wd/hub -DvideoUrl=https://s3-ap-southeast-2.amazonaws.com/b2729248-ak68-6948-a2y8-80e7479te16a/9ag7b09j-6a38-58w2-bb01-17qw724ce46t
@@ -38,14 +17,71 @@ import com.thoughtworks.selenium.Selenium;
 // Also, the Jenkins hostname is passed in via -DjenkinsHostname from Jenkins maven job
 
 public class test {
-	private Selenium selenium;
+	private WebDriver driver;
+	private String baseUrl;
+//	private boolean acceptNextAlert = true;
+	private StringBuffer verificationErrors = new StringBuffer();
 
-	@Before
-	public void setUp() throws Exception {
-		selenium = new DefaultSelenium("ec2-52-32-174-44.us-west-2.compute.amazonaws.com", 4444, "*firefox", "https://docs.google.com/");
-		selenium.start();
+	@Test
+	public void testTemp1() throws Exception {
+		DesiredCapabilities cap = DesiredCapabilities.firefox();
+		cap.setCapability("jenkins.label", "redhat5 && amd64");
+//		driver = new FirefoxDriver();
+		driver = new RemoteWebDriver(
+				new URL("http://ec2-52-32-174-44.us-west-2.compute.amazonaws.com:4444/wd/hub"),
+				cap);
+		baseUrl = "https://docs.google.com/";
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.get(baseUrl +
+		"/forms/d/1xB5BbIf6ZIkhXsZrk0WyerGc-UcBDpCm26ydOFpYLYI/viewform");
+		driver.findElement(By.id("entry_1359528431")).clear();
+		driver.findElement(By.id("entry_1359528431")).sendKeys("jufni2");
+		driver.findElement(By.id("ss-submit")).click();
 	}
 
+	@After
+	public void tearDown() throws Exception {
+		driver.quit();
+		String verificationErrorString = verificationErrors.toString();
+		if (!"".equals(verificationErrorString)) {
+//			fail(verificationErrorString);
+		}
+	}
+	
+//
+//	private boolean isElementPresent(By by) {
+//		try {
+//			driver.findElement(by);
+//			return true;
+//		} catch (NoSuchElementException e) {
+//			return false;
+//		}
+//	}
+//
+//	private boolean isAlertPresent() {
+//		try {
+//			driver.switchTo().alert();
+//			return true;
+//		} catch (NoAlertPresentException e) {
+//			return false;
+//		}
+//	}
+//
+//	private String closeAlertAndGetItsText() {
+//		try {
+//			Alert alert = driver.switchTo().alert();
+//			String alertText = alert.getText();
+//			if (acceptNextAlert) {
+//				alert.accept();
+//			} else {
+//				alert.dismiss();
+//			}
+//			return alertText;
+//		} finally {
+//			acceptNextAlert = true;
+//		}
+//	}
+/*
 	@Test
 	public void test0001() throws Exception {
 		selenium.open("/forms/d/18nq9YuC0E8p2JOONkqZ5IAMIdP1eytiEDV8hJn_spHk/viewform");
