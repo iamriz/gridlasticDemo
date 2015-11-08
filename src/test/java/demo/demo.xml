@@ -8,7 +8,7 @@
 		<parameter name="test-title" value="chrome with screenshot" />
 		<parameter name="browser-name" value="firefox" />
 		<parameter name="platform-name" value="linux" />
-		<parameter name="browser-version" value="" />
+		<parameter name="browser-version" value="42.0" />
 		<parameter name="record-video" value="False" />
 		<parameter name="hub" value="http://ec2-52-32-174-44.us-west-2.compute.amazonaws.com:4444/wd/hub" />
 		<classes>
