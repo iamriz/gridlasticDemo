@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
@@ -32,23 +33,23 @@ public class test {
 
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setBrowserName(browser_name);
-		capabilities.setVersion(browser_version);
-
+//		capabilities.setVersion(browser_version);
+		capabilities.setCapability(FirefoxDriver.PROFILE, new FirefoxProfile());
 		if (platform_name.equalsIgnoreCase("linux")) {
 			capabilities.setPlatform(Platform.LINUX);
 		}
 
-		if (browser_name.equalsIgnoreCase("chrome")) {
-			ChromeOptions options = new ChromeOptions();
-			// On LINUX the "start-maximized" Chrome option does not expand
-			// browser window to max screen size.
-			if (platform_name.equalsIgnoreCase("linux")) {
-				options.addArguments(Arrays.asList("--window-size=1920,1080"));
-			} else {
-				options.addArguments(Arrays.asList("--start-maximized"));
-			}
-			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-		}
+//		if (browser_name.equalsIgnoreCase("chrome")) {
+//			ChromeOptions options = new ChromeOptions();
+//			// On LINUX the "start-maximized" Chrome option does not expand
+//			// browser window to max screen size.
+//			if (platform_name.equalsIgnoreCase("linux")) {
+//				options.addArguments(Arrays.asList("--window-size=1920,1080"));
+//			} else {
+//				options.addArguments(Arrays.asList("--start-maximized"));
+//			}
+//			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+//		}
 
 		this.driver = new RemoteWebDriver(new URL(hub), capabilities);
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
