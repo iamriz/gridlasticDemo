@@ -31,8 +31,13 @@ public class test {
 			String browser_version, String hub, ITestContext myTestContext)
 			throws Exception {
 
+<<<<<<< .mine
 		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
 //		capabilities.setBrowserName(browser_name);
+=======
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+//		capabilities.setBrowserName(browser_name);
+>>>>>>> .theirs
 //		capabilities.setVersion(browser_version);
 		capabilities.setCapability("jenkins.label", "redhat5 && amd64");
 		//capabilities.setCapability(FirefoxDriver.PROFILE, new FirefoxProfile());
