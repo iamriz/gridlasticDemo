@@ -3,10 +3,10 @@ package demo;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.*;
+
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
@@ -32,7 +32,7 @@ public class test {
 			throws Exception {
 
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setBrowserName(browser_name);
+//		capabilities.setBrowserName(browser_name);
 //		capabilities.setVersion(browser_version);
 		capabilities.setCapability(FirefoxDriver.PROFILE, new FirefoxProfile());
 		if (platform_name.equalsIgnoreCase("linux")) {
