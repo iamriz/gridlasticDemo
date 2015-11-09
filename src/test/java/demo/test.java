@@ -32,7 +32,11 @@ public class test {
 			String browser_version, String hub, ITestContext myTestContext)
 			throws Exception {
 
+<<<<<<< HEAD
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+=======
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+>>>>>>> f6268c4d883f289f544c5f6c6c8ac95d673c42a6
 //		capabilities.setCapability("jenkins.label", "amd64");
 		capabilities.setPlatform(Platform.LINUX);
 		capabilities.setBrowserName(browser_name); 
