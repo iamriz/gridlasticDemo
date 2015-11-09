@@ -31,15 +31,13 @@ public class test {
 			String browser_version, String hub, ITestContext myTestContext)
 			throws Exception {
 
-		DesiredCapabilities capabilities = new DesiredCapabilities();
+		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
 //		capabilities.setCapability("jenkins.label", "amd64");
-		capabilities.setBrowserName("chrome");
 		capabilities.setPlatform(Platform.LINUX);
+		capabilities.setBrowserName(browser_name); 
+//		capabilities.setVersion(browser_version);
+		capabilities.setCapability(FirefoxDriver.PROFILE, new FirefoxProfile());
 		
-//		capabilities.setBrowserName(browser_name); 
-		capabilities.setVersion(browser_version);
-		
-//		capabilities.setCapability(FirefoxDriver.PROFILE, new FirefoxProfile());
 //		if (platform_name.equalsIgnoreCase("linux")) {
 //			capabilities.setPlatform(Platform.LINUX);
 //		}
