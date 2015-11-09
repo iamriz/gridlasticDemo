@@ -35,7 +35,7 @@ public class test {
 //		capabilities.setCapability("jenkins.label", "redhat5 && amd64");
 		capabilities.setPlatform(Platform.LINUX);
 		capabilities.setBrowserName(browser_name); 
-		capabilities.setVersion(browser_version);
+//		capabilities.setVersion(browser_version);
 //		capabilities.setCapability(FirefoxDriver.PROFILE, new FirefoxProfile());
 		
 //		if (platform_name.equalsIgnoreCase("linux")) {
