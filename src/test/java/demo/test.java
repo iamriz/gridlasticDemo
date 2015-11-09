@@ -32,7 +32,7 @@ public class test {
 	public void testTemp1(String browser_name, String platform_name,
 			String browser_version, String hub, ITestContext myTestContext)
 			throws Exception {
-
+		System.setProperty("webdriver.chrome.driver", "/usr/bin/google-chrome");
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 //		capabilities.setCapability("jenkins.label", "redhat5 && amd64");
 		capabilities.setPlatform(Platform.LINUX);
