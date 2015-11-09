@@ -60,7 +60,7 @@ public class test {
 		driver.findElement(By.id("entry_1359528431")).clear();
 		driver.findElement(By.id("entry_1359528431")).sendKeys("jufni4");
 		driver.findElement(By.id("ss-submit")).click();
-		System.setProperty(key, value)
+//		System.setProperty(key, value)
 	}
 
 	@AfterMethod(alwaysRun = true)
