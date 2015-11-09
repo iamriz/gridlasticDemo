@@ -36,7 +36,7 @@ public class test {
 		capabilities.setPlatform(Platform.LINUX);
 		capabilities.setBrowserName(browser_name); 
 		capabilities.setVersion(browser_version);
-//		capabilities.setCapability(FirefoxDriver.PROFILE, new FirefoxProfile());
+		capabilities.setCapability(FirefoxDriver.PROFILE, new FirefoxProfile());
 		
 //		if (platform_name.equalsIgnoreCase("linux")) {
 //			capabilities.setPlatform(Platform.LINUX);
