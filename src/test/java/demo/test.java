@@ -5,6 +5,7 @@ import org.openqa.selenium.Platform;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -31,12 +32,15 @@ public class test {
 			String browser_version, String hub, ITestContext myTestContext)
 			throws Exception {
 
-		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+		DesiredCapabilities capabilities = new DesiredCapabilities();
 //		capabilities.setCapability("jenkins.label", "amd64");
 		capabilities.setPlatform(Platform.LINUX);
 		capabilities.setBrowserName(browser_name); 
 //		capabilities.setVersion(browser_version);
-		capabilities.setCapability(FirefoxDriver.PROFILE, new FirefoxProfile());
+//		capabilities.setCapability(FirefoxDriver.PROFILE, new FirefoxProfile());
+		
+		ChromeOptions options = new ChromeOptions();
+		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 		
 //		if (platform_name.equalsIgnoreCase("linux")) {
 //			capabilities.setPlatform(Platform.LINUX);
