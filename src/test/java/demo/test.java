@@ -3,8 +3,10 @@ package demo;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -31,7 +33,7 @@ public class test {
 			String browser_version, String hub, ITestContext myTestContext)
 			throws Exception {
 
-		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 //		capabilities.setCapability("jenkins.label", "redhat5 && amd64");
 		capabilities.setPlatform(Platform.LINUX);
 		capabilities.setBrowserName(browser_name); 
@@ -42,17 +44,17 @@ public class test {
 //			capabilities.setPlatform(Platform.LINUX);
 //		}
 
-//		if (browser_name.equalsIgnoreCase("chrome")) {
-//			ChromeOptions options = new ChromeOptions();
-//			// On LINUX the "start-maximized" Chrome option does not expand
-//			// browser window to max screen size.
-//			if (platform_name.equalsIgnoreCase("linux")) {
-//				options.addArguments(Arrays.asList("--window-size=1920,1080"));
-//			} else {
-//				options.addArguments(Arrays.asList("--start-maximized"));
-//			}
-//			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-//		}
+		if (browser_name.equalsIgnoreCase("chrome")) {
+			ChromeOptions options = new ChromeOptions();
+			// On LINUX the "start-maximized" Chrome option does not expand
+			// browser window to max screen size.
+			if (platform_name.equalsIgnoreCase("linux")) {
+				options.addArguments(Arrays.asList("--window-size=1920,1080"));
+			} else {
+				options.addArguments(Arrays.asList("--start-maximized"));
+			}
+			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+		}
 
 		this.driver = new RemoteWebDriver(new URL(hub), capabilities);
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
