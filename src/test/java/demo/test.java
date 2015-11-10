@@ -35,18 +35,18 @@ public class test {
 	DesiredCapabilities capabilities;
 	private static ChromeDriverService service;
 	
-	@BeforeClass
-	public static void createAndStartService() throws IOException {
-		service = new ChromeDriverService.Builder()
-				.usingDriverExecutable(new File("/usr/bin/chromedriver"))
-				.usingAnyFreePort().build();
-		service.start();
-	}
-
-	@AfterClass
-	public static void createAndStopService() {
-		service.stop();
-	}
+//	@BeforeClass
+//	public static void createAndStartService() throws IOException {
+//		service = new ChromeDriverService.Builder()
+//				.usingDriverExecutable(new File("/usr/bin/google-chrome"))
+//				.usingAnyFreePort().build();
+//		service.start();
+//	}
+//
+//	@AfterClass
+//	public static void createAndStopService() {
+//		service.stop();
+//	}
 	
 	@Parameters({ "browser-name", "platform-name", "browser-version", "hub" })
 	@Test(alwaysRun = true)
