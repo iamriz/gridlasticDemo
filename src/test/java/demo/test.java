@@ -1,13 +1,18 @@
 package demo;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
@@ -28,7 +33,21 @@ public class test {
 	private WebDriver driver;
 	ITestContext myTestContext;
 	DesiredCapabilities capabilities;
+	private static ChromeDriverService service;
+	
+	@BeforeClass
+	public static void createAndStartService() throws IOException {
+		service = new ChromeDriverService.Builder()
+				.usingDriverExecutable(new File("/usr/bin/chromedriver"))
+				.usingAnyFreePort().build();
+		service.start();
+	}
 
+	@AfterClass
+	public static void createAndStopService() {
+		service.stop();
+	}
+	
 	@Parameters({ "browser-name", "platform-name", "browser-version", "hub" })
 	@Test(alwaysRun = true)
 	public void testTemp1(String browser_name, String platform_name,
@@ -36,7 +55,6 @@ public class test {
 			throws Exception {
 //		System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-//		capabilities.setCapability("jenkins.label", "redhat5 && amd64");
 		capabilities.setPlatform(Platform.LINUX);
 		capabilities.setBrowserName(browser_name); 
 //		capabilities.setVersion(browser_version);
