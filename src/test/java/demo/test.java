@@ -2,6 +2,8 @@ package demo;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
+import org.openqa.selenium.WebDriver;
+
 import java.net.URL;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
@@ -23,7 +25,7 @@ import org.testng.annotations.Parameters;
 
 public class test {
 	private String baseUrl;
-	private RemoteWebDriver driver;
+	private WebDriver driver;
 	ITestContext myTestContext;
 	DesiredCapabilities capabilities;
 
