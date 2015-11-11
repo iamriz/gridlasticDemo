@@ -60,23 +60,25 @@ public class test {
 	public void testTemp1(String browser_name, String platform_name,
 			String browser_version, String hub, ITestContext myTestContext)
 			throws Exception {
-//		System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+		// Enable logging
+		System.setProperty("webdriver.chrome.logfile", "/usr/local/bin/chromedriver.log");
+		System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 		capabilities.setPlatform(Platform.LINUX);
 		capabilities.setBrowserName(browser_name); 
 		
-		// Enable logging
-		LoggingPreferences logPrefs = new LoggingPreferences();
-		logPrefs.enable(LogType.PERFORMANCE, Level.ALL);
-		capabilities.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
 
-		HashMap<String, Object> perfLogPrefs = new HashMap<String, Object>();
-		perfLogPrefs.put("traceCategories", "browser,devtools.timeline,devtools"); // comma-separated trace categories
-		ChromeOptions options = new ChromeOptions();
-		options.setExperimentalOption("perfLoggingPrefs", perfLogPrefs);
-		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-
-//		capabilities.setVersion(browser_version);
+//		LoggingPreferences logPrefs = new LoggingPreferences();
+//		logPrefs.enable(LogType.PERFORMANCE, Level.ALL);
+//		capabilities.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
+//
+//		HashMap<String, Object> perfLogPrefs = new HashMap<String, Object>();
+//		perfLogPrefs.put("traceCategories", "browser,devtools.timeline,devtools"); // comma-separated trace categories
+//		ChromeOptions options = new ChromeOptions();
+//		options.setExperimentalOption("perfLoggingPrefs", perfLogPrefs);
+//		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+		
+		//		capabilities.setVersion(browser_version);
 //		capabilities.setCapability(FirefoxDriver.PROFILE, new FirefoxProfile());
 		
 //		if (platform_name.equalsIgnoreCase("linux")) {
