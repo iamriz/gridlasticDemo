@@ -1,34 +1,24 @@
 package demo;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Platform;
-import org.openqa.selenium.WebDriver;
-
-import java.io.File;
-import java.io.IOException;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
-import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Parameters;
-
-import com.gargoylesoftware.htmlunit.javascript.host.Map;
 
 // Notes: hub and videoURL parameter is passed in from Jenkins maven job like:
 // GOAL: test -Dhub=http://USERNAME:USER_KEY@SUBDOMAIN.gridlastic.com:80/wd/hub -DvideoUrl=https://s3-ap-southeast-2.amazonaws.com/b2729248-ak68-6948-a2y8-80e7479te16a/9ag7b09j-6a38-58w2-bb01-17qw724ce46t
@@ -40,20 +30,6 @@ public class test {
 	private WebDriver driver;
 	ITestContext myTestContext;
 	DesiredCapabilities capabilities;
-	private static ChromeDriverService service;
-	
-//	@BeforeClass
-//	public static void createAndStartService() throws IOException {
-//		service = new ChromeDriverService.Builder()
-//				.usingDriverExecutable(new File("/usr/bin/google-chrome"))
-//				.usingAnyFreePort().build();
-//		service.start();
-//	}
-//
-//	@AfterClass
-//	public static void createAndStopService() {
-//		service.stop();
-//	}
 	
 	@Parameters({ "browser-name", "platform-name", "browser-version", "hub" })
 	@Test(alwaysRun = true)
@@ -67,18 +43,18 @@ public class test {
 		capabilities.setPlatform(Platform.LINUX);
 		capabilities.setBrowserName(browser_name); 
 		
+		LoggingPreferences logPrefs = new LoggingPreferences();
+		logPrefs.enable(LogType.PERFORMANCE, Level.ALL);
+		capabilities.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
 
-//		LoggingPreferences logPrefs = new LoggingPreferences();
-//		logPrefs.enable(LogType.PERFORMANCE, Level.ALL);
-//		capabilities.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
-//
-//		HashMap<String, Object> perfLogPrefs = new HashMap<String, Object>();
-//		perfLogPrefs.put("traceCategories", "browser,devtools.timeline,devtools"); // comma-separated trace categories
-//		ChromeOptions options = new ChromeOptions();
-//		options.setExperimentalOption("perfLoggingPrefs", perfLogPrefs);
-//		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+		HashMap<String, Object> perfLogPrefs = new HashMap<String, Object>();
+		perfLogPrefs.put("traceCategories", "browser,devtools.timeline,devtools"); // comma-separated trace categories
+		perfLogPrefs.put("enableTimeline", true);
+		ChromeOptions options = new ChromeOptions();
+		options.setExperimentalOption("perfLoggingPrefs", perfLogPrefs);
+		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 		
-		//		capabilities.setVersion(browser_version);
+//		capabilities.setVersion(browser_version);
 //		capabilities.setCapability(FirefoxDriver.PROFILE, new FirefoxProfile());
 		
 //		if (platform_name.equalsIgnoreCase("linux")) {
@@ -97,7 +73,7 @@ public class test {
 //			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 //		}
 
-		this.driver = new RemoteWebDriver(new URL(hub), capabilities);
+		driver = new RemoteWebDriver(new URL("http://52.32.174.44:4444/wd/hub"), capabilities);
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
 		baseUrl = "https://docs.google.com/";
