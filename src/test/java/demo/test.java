@@ -37,11 +37,11 @@ public class test {
 			String browser_version, String hub, ITestContext myTestContext)
 			throws Exception {
 		// Enable logging
-		System.setProperty("webdriver.chrome.logfile", "/usr/local/bin/chromedriver.log");
-		System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+//		System.setProperty("webdriver.chrome.logfile", "/usr/local/bin/chromedriver.log");
+//		System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 		capabilities.setPlatform(Platform.LINUX);
-		capabilities.setBrowserName(browser_name); 
+		capabilities.setBrowserName("*googlechrome"); 
 		
 		LoggingPreferences logPrefs = new LoggingPreferences();
 		logPrefs.enable(LogType.PERFORMANCE, Level.ALL);
@@ -73,7 +73,7 @@ public class test {
 //			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 //		}
 
-		driver = new RemoteWebDriver(new URL("http://ec2-52-10-15-227.us-west-2.compute.amazonaws.com:4444/wd/hub"), capabilities);
+		driver = new RemoteWebDriver(new URL("http://ec2-52-32-174-44.us-west-2.compute.amazonaws.com:4444/wd/hub"), capabilities);
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
 		baseUrl = "https://docs.google.com/";
