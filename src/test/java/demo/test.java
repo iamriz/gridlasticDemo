@@ -43,16 +43,17 @@ public class test {
 		capabilities.setPlatform(Platform.LINUX);
 		capabilities.setBrowserName(browser_name); 
 		
-		LoggingPreferences logPrefs = new LoggingPreferences();
-		logPrefs.enable(LogType.PERFORMANCE, Level.ALL);
-		capabilities.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
-
-		HashMap<String, Object> perfLogPrefs = new HashMap<String, Object>();
-		perfLogPrefs.put("traceCategories", "browser,devtools.timeline,devtools"); // comma-separated trace categories
-		perfLogPrefs.put("enableTimeline", true);
-		ChromeOptions options = new ChromeOptions();
-		options.setExperimentalOption("perfLoggingPrefs", perfLogPrefs);
-		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+		// Logging ----------------------------
+//		LoggingPreferences logPrefs = new LoggingPreferences();
+//		logPrefs.enable(LogType.PERFORMANCE, Level.ALL);
+//		capabilities.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
+//
+//		HashMap<String, Object> perfLogPrefs = new HashMap<String, Object>();
+//		perfLogPrefs.put("traceCategories", "browser,devtools.timeline,devtools"); // comma-separated trace categories
+//		perfLogPrefs.put("enableTimeline", true);
+//		ChromeOptions options = new ChromeOptions();
+//		options.setExperimentalOption("perfLoggingPrefs", perfLogPrefs);
+//		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 		
 //		capabilities.setVersion(browser_version);
 //		capabilities.setCapability(FirefoxDriver.PROFILE, new FirefoxProfile());
