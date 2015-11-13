@@ -41,7 +41,7 @@ public class test {
 //		System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 		capabilities.setPlatform(Platform.LINUX);
-		capabilities.setBrowserName("*googlechrome"); 
+		capabilities.setBrowserName(browser_name); 
 		
 		LoggingPreferences logPrefs = new LoggingPreferences();
 		logPrefs.enable(LogType.PERFORMANCE, Level.ALL);
