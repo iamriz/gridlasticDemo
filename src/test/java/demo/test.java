@@ -73,13 +73,13 @@ public class test {
 //			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 //		}
 
-		driver = new RemoteWebDriver(new URL("http://ec2-52-32-174-44.us-west-2.compute.amazonaws.com:4444/wd/hub"), capabilities);
+		driver = new RemoteWebDriver(new URL("http://ec2-52-33-199-234.us-west-2.compute.amazonaws.com:4444/wd/hub"), capabilities);
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
 		baseUrl = "https://docs.google.com/";
 		driver.get(baseUrl + "/forms/d/1xB5BbIf6ZIkhXsZrk0WyerGc-UcBDpCm26ydOFpYLYI/viewform");
 		driver.findElement(By.id("entry_1359528431")).clear();
-		driver.findElement(By.id("entry_1359528431")).sendKeys("jufni4");
+		driver.findElement(By.id("entry_1359528431")).sendKeys("jufni5");
 		driver.findElement(By.id("ss-submit")).click();
 //		System.setProperty(key, value)
 	}
