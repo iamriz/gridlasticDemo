@@ -39,10 +39,13 @@ public class test {
 		// Enable logging
 //		System.setProperty("webdriver.chrome.logfile", "/usr/local/bin/chromedriver.log");
 //		System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+		
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--no-sandbox");
 		capabilities.setPlatform(Platform.LINUX);
 		capabilities.setBrowserName(browser_name); 
-		
+		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 		// Logging ----------------------------
 //		LoggingPreferences logPrefs = new LoggingPreferences();
 //		logPrefs.enable(LogType.PERFORMANCE, Level.ALL);
