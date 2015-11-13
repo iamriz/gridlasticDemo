@@ -1,6 +1,7 @@
 package demo;
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -42,7 +43,11 @@ public class test {
 		
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--no-sandbox");
+//		options.addArguments("--no-sandbox");
+		// On LINUX the "start-maximized" Chrome option does not expand
+		// browser window to max screen size.
+		options.addArguments(Arrays.asList("--window-size=1920,1080"));
+		options.addArguments(Arrays.asList("--start-maximized"));
 		capabilities.setPlatform(Platform.LINUX);
 		capabilities.setBrowserName(browser_name); 
 		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
