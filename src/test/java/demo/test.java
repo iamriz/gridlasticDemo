@@ -10,6 +10,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.remote.CapabilityType;
@@ -51,6 +53,8 @@ public class test {
 		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
 		capabilities.setPlatform(Platform.LINUX);
 		capabilities.setBrowserName("firefox"); 
+		capabilities.setCapability(FirefoxDriver.PROFILE, new FirefoxProfile());
+
 //		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 		
 		// On LINUX the "start-maximized" Chrome option does not expand
