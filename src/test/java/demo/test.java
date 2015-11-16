@@ -41,12 +41,17 @@ public class test {
 //		System.setProperty("webdriver.chrome.logfile", "/usr/local/bin/chromedriver.log");
 //		System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
 		
-		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--no-sandbox");
+//		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+//		ChromeOptions options = new ChromeOptions();
+//		options.addArguments("--no-sandbox");
+//		capabilities.setPlatform(Platform.LINUX);
+//		capabilities.setBrowserName(browser_name); 
+//		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+		
+		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
 		capabilities.setPlatform(Platform.LINUX);
-		capabilities.setBrowserName(browser_name); 
-		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+		capabilities.setBrowserName("firefox"); 
+//		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 		
 		// On LINUX the "start-maximized" Chrome option does not expand
 		// browser window to max screen size.
