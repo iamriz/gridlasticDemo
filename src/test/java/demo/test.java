@@ -50,7 +50,8 @@ public class test {
 //		capabilities.setBrowserName(browser_name); 
 //		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 		
-		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+//		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setPlatform(Platform.LINUX);
 		capabilities.setBrowserName("firefox"); 
 		capabilities.setCapability(FirefoxDriver.PROFILE, new FirefoxProfile());
