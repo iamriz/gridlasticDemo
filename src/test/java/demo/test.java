@@ -43,18 +43,18 @@ public class test {
 //		System.setProperty("webdriver.chrome.logfile", "/usr/local/bin/chromedriver.log");
 //		System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
 		
-//		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-//		ChromeOptions options = new ChromeOptions();
-//		options.addArguments("--no-sandbox");
-//		capabilities.setPlatform(Platform.LINUX);
-//		capabilities.setBrowserName(browser_name); 
-//		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--no-sandbox");
+		capabilities.setPlatform(Platform.LINUX);
+		capabilities.setBrowserName(browser_name); 
+		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 		
 //		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setPlatform(Platform.LINUX);
-		capabilities.setBrowserName("firefox"); 
-		capabilities.setCapability(FirefoxDriver.PROFILE, new FirefoxProfile());
+//		DesiredCapabilities capabilities = new DesiredCapabilities();
+//		capabilities.setPlatform(Platform.LINUX);
+//		capabilities.setBrowserName("firefox"); 
+//		capabilities.setCapability(FirefoxDriver.PROFILE, new FirefoxProfile());
 
 //		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 		
