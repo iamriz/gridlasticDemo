@@ -4,7 +4,7 @@
 		<listener class-name="demo.CustomListener" />
 	</listeners>
 
-	<test name="Test chrome on windows 7 with screenshot">
+	<test name="Test Chrome on Linux">
 		<parameter name="test-title" value="CHROME" />
 		<parameter name="browser-name" value="chrome" />
 		<parameter name="platform-name" value="linux" />

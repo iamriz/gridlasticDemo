@@ -3,9 +3,6 @@ package demo;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.After;
-import org.junit.Before;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +10,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import org.testng.annotations.Parameters;
 
@@ -26,9 +25,8 @@ public class test {
 	DesiredCapabilities capabilities;
 	
 	@Parameters({ "browser-name", "platform-name", "hub" })
-	@Before
-	public void setUp(String browser_name, String platform_name,
-			String browser_version, String hub) throws Exception {
+	@BeforeMethod
+	public void setUp(String browser_name, String platform_name, String hub) throws Exception {
 		
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--no-sandbox");
@@ -45,7 +43,7 @@ public class test {
 	}
 	  
 	
-	@Test(alwaysRun = true)
+	@Test
 	public void test001() throws Exception {
 	    driver.get(baseUrl + "/forms/d/18nq9YuC0E8p2JOONkqZ5IAMIdP1eytiEDV8hJn_spHk/viewform");
 	    driver.findElement(By.id("entry_785445797")).clear();
@@ -55,7 +53,7 @@ public class test {
 	    driver.findElement(By.id("ss-submit")).click();
 	}
 
-	@After
+	@AfterMethod
 	public void tearDown() throws Exception {
 		driver.quit();
 	}
