@@ -8,7 +8,7 @@
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
-			<version>6.7</version>
+			<version>6.9.4</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -19,7 +19,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.8.1</version>
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -41,11 +41,11 @@
 					<suiteXmlFiles>
 						<suiteXmlFile>${basedir}/src/test/java/demo/demo.xml</suiteXmlFile>
 					</suiteXmlFiles>
-					<systemPropertyVariables>
-						<hub>${hub}</hub>
-						<videoUrl>${videoUrl}</videoUrl>
-						<jenkinsHostname>${jenkinsHostname}</jenkinsHostname>
-					</systemPropertyVariables>
+<!-- 					<systemPropertyVariables> -->
+<!-- 						<hub>${hub}</hub> -->
+<!-- 						<videoUrl>${videoUrl}</videoUrl> -->
+<!-- 						<jenkinsHostname>${jenkinsHostname}</jenkinsHostname> -->
+<!-- 					</systemPropertyVariables> -->
 				</configuration>
 			</plugin>
 		</plugins>
