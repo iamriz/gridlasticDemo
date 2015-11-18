@@ -8,7 +8,7 @@
 		<parameter name="test-title" value="CHROME" />
 		<parameter name="browser-name" value="chrome" />
 		<parameter name="platform-name" value="linux" />
-<!-- 		<parameter name="browser-version" value="41.0" /> -->
+<!-- 		<parameter name="browser-version" value="41.0" />-->
 		<parameter name="hub" value="http://ec2-52-33-199-234.us-west-2.compute.amazonaws.com:4444/wd/hub" />
 		<classes>
 			<class name="demo.test" />
